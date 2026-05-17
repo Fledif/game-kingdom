@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "IsometricWorld.Demo/1.0.0": {
+        "dependencies": {
+          "IsometricWorld.Core": "1.0.0"
+        },
+        "runtime": {
+          "IsometricWorld.Demo.dll": {}
+        }
+      },
+      "IsometricWorld.Core/1.0.0": {
+        "runtime": {
+          "IsometricWorld.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "IsometricWorld.Demo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "IsometricWorld.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "MjUXDl2vEDE=",
+  "success": true,
+  "projectFilePath": "C:\\Project\\IsometricWorld.Demo\\IsometricWorld.Demo.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Bogdan\\.nuget\\packages\\microsoft.win32.systemevents\\10.0.8\\microsoft.win32.systemevents.10.0.8.nupkg.sha512",
+    "C:\\Users\\Bogdan\\.nuget\\packages\\system.drawing.common\\10.0.8\\system.drawing.common.10.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}

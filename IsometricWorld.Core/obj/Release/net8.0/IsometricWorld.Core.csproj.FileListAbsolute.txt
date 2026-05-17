@@ -1,0 +1,12 @@
+C:\Project\IsometricWorld.Core\bin\Release\net8.0\IsometricWorld.Core.deps.json
+C:\Project\IsometricWorld.Core\bin\Release\net8.0\IsometricWorld.Core.dll
+C:\Project\IsometricWorld.Core\bin\Release\net8.0\IsometricWorld.Core.pdb
+C:\Project\IsometricWorld.Core\obj\Release\net8.0\IsometricWorld.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Project\IsometricWorld.Core\obj\Release\net8.0\IsometricWorld.Core.AssemblyInfoInputs.cache
+C:\Project\IsometricWorld.Core\obj\Release\net8.0\IsometricWorld.Core.AssemblyInfo.cs
+C:\Project\IsometricWorld.Core\obj\Release\net8.0\IsometricWorld.Core.csproj.CoreCompileInputs.cache
+C:\Project\IsometricWorld.Core\obj\Release\net8.0\IsometricWorld.Core.dll
+C:\Project\IsometricWorld.Core\obj\Release\net8.0\refint\IsometricWorld.Core.dll
+C:\Project\IsometricWorld.Core\obj\Release\net8.0\IsometricWorld.Core.pdb
+C:\Project\IsometricWorld.Core\obj\Release\net8.0\ref\IsometricWorld.Core.dll
+C:\Project\IsometricWorld.Core\obj\Release\net8.0\IsometricWorld.Core.csproj.AssemblyReference.cache
