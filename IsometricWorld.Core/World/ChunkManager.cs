@@ -185,6 +185,30 @@ namespace IsometricWorld.Core.World
         /// <summary>Повертає ключі всіх завантажених чанків (для стрімінгу).</summary>
         public System.Collections.Generic.IEnumerable<(int cx, int cy)> GetLoadedChunkKeys() => _loadedChunks.Keys;
 
+        /// <summary>Додає вільну будівлю у відповідний чанк.</summary>
+        public void AddBuilding(FreeBuilding building)
+        {
+            int chunkX = FloorDiv((int)Math.Floor(building.WorldX), ChunkSize);
+            int chunkY = FloorDiv((int)Math.Floor(building.WorldY), ChunkSize);
+
+            if (_loadedChunks.TryGetValue((chunkX, chunkY), out Chunk? chunk))
+            {
+                chunk.Buildings.Add(building);
+            }
+        }
+
+        /// <summary>Отримує всі будівлі з активних чанків для рендеру та колізій.</summary>
+        public IEnumerable<FreeBuilding> GetLoadedBuildings()
+        {
+            foreach (var chunk in _loadedChunks.Values)
+            {
+                foreach (var b in chunk.Buildings)
+                {
+                    yield return b;
+                }
+            }
+        }
+
         // ── Приватна математика ───────────────────────────────────────────────────
 
         /// <summary>

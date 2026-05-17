@@ -9,3 +9,5 @@ C:\Project\IsometricWorld.Core\obj\Debug\net8.0\IsometricWorld.Core.dll
 C:\Project\IsometricWorld.Core\obj\Debug\net8.0\refint\IsometricWorld.Core.dll
 C:\Project\IsometricWorld.Core\obj\Debug\net8.0\IsometricWorld.Core.pdb
 C:\Project\IsometricWorld.Core\obj\Debug\net8.0\ref\IsometricWorld.Core.dll
+C:\Project\IsometricWorld.Core\obj\Debug\net8.0\IsometricWorld.Core.csproj.AssemblyReference.cache
+C:\Project\IsometricWorld.Core\obj\Debug\net8.0\IsometricWorld.Core.sourcelink.json

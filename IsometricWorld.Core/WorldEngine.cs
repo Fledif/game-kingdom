@@ -10,12 +10,6 @@ using IsometricWorld.Core.Generation;
 
 namespace IsometricWorld.Core
 {
-    public struct FreeBuilding
-    {
-        public float WorldX;
-        public float WorldY;
-    }
-
     public sealed class WorldEngine
     {
         public ChunkManager ChunkManager { get; private set; } = null!;
@@ -24,8 +18,6 @@ namespace IsometricWorld.Core
 
         private const int ChunkLoadRadius = 2;
         private Bitmap _cachedGlobalMap = null;
-
-        public List<FreeBuilding> Buildings = new();
 
         public void Initialize(IGraphicsDevice graphicsDevice, int chunkSize, int viewportWidth, int viewportHeight)
         {
@@ -85,9 +77,31 @@ namespace IsometricWorld.Core
             _cachedGlobalMap = null;
         }
 
+        public bool TryAddBuilding(float worldX, float worldY, float radius = 1.0f)
+        {
+            // Перевірка колізій Bounding Boxes (циліндричні радіуси)
+            foreach (var b in ChunkManager.GetLoadedBuildings())
+            {
+                float dx = b.WorldX - worldX;
+                float dy = b.WorldY - worldY;
+                float distSq = dx * dx + dy * dy;
+                float minDist = b.Radius + radius;
+
+                if (distSq < minDist * minDist)
+                {
+                    return false; // Колізія знайдена
+                }
+            }
+
+            // Немає колізій — зберігаємо у чанк
+            ChunkManager.AddBuilding(new FreeBuilding { WorldX = worldX, WorldY = worldY, Radius = radius });
+            return true;
+        }
+
         public void Draw(IGraphicsDevice graphics)
         {
-            Renderer.DrawWorld(ChunkManager, Buildings, (int)Camera.X, (int)Camera.Y, Camera.ViewportWidth, Camera.ViewportHeight);
+            var activeBuildings = new List<FreeBuilding>(ChunkManager.GetLoadedBuildings());
+            Renderer.DrawWorld(ChunkManager, activeBuildings, (int)Camera.X, (int)Camera.Y, Camera.ViewportWidth, Camera.ViewportHeight);
         }
 
         public void DrawGlobalMap(Graphics g, int screenWidth, int screenHeight)

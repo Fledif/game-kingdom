@@ -7,6 +7,13 @@ using System.Runtime.CompilerServices;
 
 namespace IsometricWorld.Core.World
 {
+    public struct FreeBuilding
+    {
+        public float WorldX;
+        public float WorldY;
+        public float Radius;
+    }
+
     /// <summary>
     /// Прямокутний блок тайлів фіксованого розміру <c>ChunkSize × ChunkSize</c>.
     /// </summary>
@@ -23,6 +30,12 @@ namespace IsometricWorld.Core.World
         /// Дозволяє швидко перевіряти наявність об'єкта на тайлі.
         /// </summary>
         public Dictionary<(int, int), Prop> Props { get; } = new();
+
+        /// <summary>
+        /// Вільні 3D-будівлі, що не прив'язані до сітки тайлів.
+        /// Зберігаються в чанку для ефективного вивантаження з пам'яті.
+        /// </summary>
+        public List<FreeBuilding> Buildings { get; } = new();
 
         public Chunk(int chunkX, int chunkY, int chunkSize)
         {

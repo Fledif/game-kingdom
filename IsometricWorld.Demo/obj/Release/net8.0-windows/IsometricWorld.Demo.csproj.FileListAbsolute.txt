@@ -21,3 +21,4 @@ C:\Project\IsometricWorld.Demo\obj\Release\net8.0-windows\refint\IsometricWorld.
 C:\Project\IsometricWorld.Demo\obj\Release\net8.0-windows\IsometricWorld.Demo.pdb
 C:\Project\IsometricWorld.Demo\obj\Release\net8.0-windows\IsometricWorld.Demo.genruntimeconfig.cache
 C:\Project\IsometricWorld.Demo\obj\Release\net8.0-windows\ref\IsometricWorld.Demo.dll
+C:\Project\IsometricWorld.Demo\obj\Release\net8.0-windows\IsometricWorld.Demo.sourcelink.json

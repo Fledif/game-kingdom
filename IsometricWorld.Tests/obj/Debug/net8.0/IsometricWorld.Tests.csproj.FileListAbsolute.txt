@@ -100,3 +100,9 @@ C:\Project\IsometricWorld.Tests\obj\Debug\net8.0\refint\IsometricWorld.Tests.dll
 C:\Project\IsometricWorld.Tests\obj\Debug\net8.0\IsometricWorld.Tests.pdb
 C:\Project\IsometricWorld.Tests\obj\Debug\net8.0\IsometricWorld.Tests.genruntimeconfig.cache
 C:\Project\IsometricWorld.Tests\obj\Debug\net8.0\ref\IsometricWorld.Tests.dll
+C:\Project\IsometricWorld.Tests\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Project\IsometricWorld.Tests\bin\Debug\net8.0\System.Drawing.Common.dll
+C:\Project\IsometricWorld.Tests\bin\Debug\net8.0\System.Private.Windows.Core.dll
+C:\Project\IsometricWorld.Tests\bin\Debug\net8.0\System.Private.Windows.GdiPlus.dll
+C:\Project\IsometricWorld.Tests\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Project\IsometricWorld.Tests\obj\Debug\net8.0\IsometricWorld.Tests.sourcelink.json

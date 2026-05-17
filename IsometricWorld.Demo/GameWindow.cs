@@ -137,26 +137,9 @@ namespace IsometricWorld.Demo
             {
                 var coords = _engine.Camera.ScreenToWorld(e.X, e.Y, ClientSize.Width, ClientSize.Height);
 
-                const float MinDistance = 1.0f;
-                bool collision = false;
-
-                foreach (var b in _engine.Buildings)
-                {
-                    float dx = b.WorldX - coords.worldX;
-                    float dy = b.WorldY - coords.worldY;
-                    float dist = (float)Math.Sqrt(dx * dx + dy * dy);
-
-                    if (dist < MinDistance)
-                    {
-                        collision = true;
-                        break;
-                    }
-                }
-
-                if (!collision)
-                {
-                    _engine.Buildings.Add(new FreeBuilding { WorldX = coords.worldX, WorldY = coords.worldY });
-                }
+                // Викликаємо нову логіку перевірки колізій та додавання будівлі у чанк.
+                // Радіус 1.0f означає, що будівля займає місце приблизно 2x2 тайли (діаметр 2.0).
+                _engine.TryAddBuilding(coords.worldX, coords.worldY, 1.0f);
             }
         }
 
