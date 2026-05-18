@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IsometricWorld.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e60e789a021f8fa2192809dc29351e88025798ab")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f877fdc7eaf41e87a45942dcceb32d49cfa8275c")]
 [assembly: System.Reflection.AssemblyProductAttribute("IsometricWorld.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IsometricWorld.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
