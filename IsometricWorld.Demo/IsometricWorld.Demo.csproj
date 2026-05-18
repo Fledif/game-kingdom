@@ -5,6 +5,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="..\sprites\**\*.png" Link="sprites\%(Filename)%(Extension)">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Drawing.Common" Version="10.0.8" />
   </ItemGroup>
 

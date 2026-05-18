@@ -1,6 +1,3 @@
-// Розробник А: Гриценко Богдан Олександрович
-// Проєкт: Custom C# Engine (Free-form Building & UI)
-
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -19,11 +16,19 @@ namespace IsometricWorld.Core
         private const int ChunkLoadRadius = 2;
         private Bitmap _cachedGlobalMap = null;
 
+        public PlayerEntity Player { get; private set; } = null!;
+
         public void Initialize(IGraphicsDevice graphicsDevice, int chunkSize, int viewportWidth, int viewportHeight)
         {
             ChunkManager = new ChunkManager(chunkSize);
             Renderer = new IsometricRenderer(graphicsDevice);
             Camera = new IsometricCamera(viewportWidth, viewportHeight);
+        }
+
+        public void InitializePlayer(string spritesFolder, int framesPerDirection, float startX, float startY)
+        {
+            var animator = new CharacterAnimator(spritesFolder, framesPerDirection);
+            Player = new PlayerEntity(startX, startY, animator);
         }
 
         public void Update(float deltaTime)
@@ -79,7 +84,6 @@ namespace IsometricWorld.Core
 
         public bool TryAddBuilding(float worldX, float worldY, float radius = 1.0f)
         {
-            // Перевірка колізій Bounding Boxes (циліндричні радіуси)
             foreach (var b in ChunkManager.GetLoadedBuildings())
             {
                 float dx = b.WorldX - worldX;
@@ -89,11 +93,10 @@ namespace IsometricWorld.Core
 
                 if (distSq < minDist * minDist)
                 {
-                    return false; // Колізія знайдена
+                    return false;
                 }
             }
 
-            // Немає колізій — зберігаємо у чанк
             ChunkManager.AddBuilding(new FreeBuilding { WorldX = worldX, WorldY = worldY, Radius = radius });
             return true;
         }
@@ -102,6 +105,28 @@ namespace IsometricWorld.Core
         {
             var activeBuildings = new List<FreeBuilding>(ChunkManager.GetLoadedBuildings());
             Renderer.DrawWorld(ChunkManager, activeBuildings, (int)Camera.X, (int)Camera.Y, Camera.ViewportWidth, Camera.ViewportHeight);
+
+            if (Player != null)
+            {
+                var g = Renderer.GetGraphics();
+                if (g != null)
+                {
+                    Player.Draw(g, (wx, wy) =>
+                    {
+                        float sx = (wx - wy) * IsometricRenderer.HalfWidth - Camera.X;
+                        float sy = (wx + wy) * IsometricRenderer.HalfHeight - Camera.Y;
+                        return new PointF(sx, sy);
+                    });
+
+                    string debugText = $"Facing: {Player.Animator.Facing}";
+                    using var font = new Font("Consolas", 14, FontStyle.Bold);
+                    using var bg = new SolidBrush(Color.FromArgb(180, 0, 0, 0));
+                    using var fg = new SolidBrush(Color.Yellow);
+                    var size = g.MeasureString(debugText, font);
+                    g.FillRectangle(bg, 10, 10, size.Width + 10, size.Height + 6);
+                    g.DrawString(debugText, font, fg, 15, 13);
+                }
+            }
         }
 
         public void DrawGlobalMap(Graphics g, int screenWidth, int screenHeight)
@@ -141,10 +166,8 @@ namespace IsometricWorld.Core
                 }
             }
 
-            // Малюємо кешовану карту на весь екран
             g.DrawImage(_cachedGlobalMap, 0, 0, screenWidth, screenHeight);
 
-            // Знаходимо позицію камери (пропорційно)
             float centerScreenX = Camera.X + screenWidth / 2f;
             float centerScreenY = Camera.Y + screenHeight / 2f;
 

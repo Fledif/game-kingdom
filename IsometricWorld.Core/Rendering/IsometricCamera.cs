@@ -1,11 +1,5 @@
-// Розробник А: Гриценко Богдан Олександрович
-// Проєкт: Custom C# Engine (Free-form Building & UI)
-
 namespace IsometricWorld.Core.Rendering
 {
-    /// <summary>
-    /// Камера для ізометричного світу з підтримкою субпіксельного переміщення.
-    /// </summary>
     public sealed class IsometricCamera
     {
         public float X { get; set; }
@@ -27,10 +21,15 @@ namespace IsometricWorld.Core.Rendering
 
         public void CenterOnWorldTile(int worldX, int worldY)
         {
-            // Вираховуємо піксельну координату тайлу без урахування камери
             var (screenX, screenY) = IsometricRenderer.WorldToScreen(worldX, worldY, 0, 0);
-            
-            // Зсуваємо так, щоб ця координата була в центрі екрану
+            X = screenX - ViewportWidth / 2f;
+            Y = screenY - ViewportHeight / 2f;
+        }
+
+        public void CenterOnWorldPosition(float worldX, float worldY)
+        {
+            float screenX = (worldX - worldY) * IsometricRenderer.HalfWidth;
+            float screenY = (worldX + worldY) * IsometricRenderer.HalfHeight;
             X = screenX - ViewportWidth / 2f;
             Y = screenY - ViewportHeight / 2f;
         }

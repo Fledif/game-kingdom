@@ -27,6 +27,9 @@ namespace IsometricWorld.Core.Rendering
             _graphicsDevice = graphicsDevice;
         }
 
+        /// <summary>Повертає поточний Graphics контекст для зовнішнього рендерингу.</summary>
+        public Graphics? GetGraphics() => _graphicsDevice.CurrentGraphics;
+
         public static (int screenX, int screenY) WorldToScreen(int worldX, int worldY, int cameraX, int cameraY)
         {
             int screenX = (worldX - worldY) * HalfWidth - cameraX;
